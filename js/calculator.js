@@ -244,10 +244,10 @@ function handleSubmit(event) {
     recommendationEl.textContent = "Both regimes result in the same tax liability for the details entered.";
     savingsBanner.textContent = "";
   } else if (newResult.totalTax < oldResult.totalTax) {
-    recommendationEl.textContent = `The New Regime is better for you — it saves ${formatCurrency(savings)} compared to the Old Regime.`;
+    recommendationEl.textContent = `The New Regime is better for you: it saves ${formatCurrency(savings)} compared to the Old Regime.`;
     savingsBanner.textContent = `You save ${formatCurrency(savings)} per year by choosing the New Regime.`;
   } else {
-    recommendationEl.textContent = `The Old Regime is better for you — it saves ${formatCurrency(savings)} compared to the New Regime.`;
+    recommendationEl.textContent = `The Old Regime is better for you: it saves ${formatCurrency(savings)} compared to the New Regime.`;
     savingsBanner.textContent = `You save ${formatCurrency(savings)} per year by choosing the Old Regime.`;
   }
 
