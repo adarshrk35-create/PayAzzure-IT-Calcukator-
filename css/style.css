@@ -1,17 +1,18 @@
 :root {
-  --color-bg: #f4f6fb;
+  --color-bg: #f6f4f5;
   --color-surface: #ffffff;
-  --color-border: #e2e6f0;
-  --color-text: #1a1f36;
-  --color-text-muted: #5b6478;
-  --color-primary: #3730a3;
-  --color-primary-dark: #262178;
-  --color-accent: #059669;
-  --color-accent-bg: #ecfdf5;
-  --color-warning-bg: #fffbeb;
-  --color-warning-text: #92400e;
+  --color-border: #e7e1e4;
+  --color-text: #1c1620;
+  --color-text-muted: #6b6470;
+  --color-primary: #97134d;
+  --color-primary-dark: #6e0e3a;
+  --color-primary-tint: #fbeef3;
+  --color-primary-border: #e9c3d5;
+  --color-accent: #f2c200;
+  --color-accent-dark: #a17f00;
+  --color-heading-accent: #6e0e3a;
   --radius: 10px;
-  --shadow: 0 1px 3px rgba(26, 31, 54, 0.08), 0 8px 24px rgba(26, 31, 54, 0.06);
+  --shadow: 0 1px 3px rgba(28, 22, 32, 0.08), 0 8px 24px rgba(28, 22, 32, 0.06);
 }
 
 * {
@@ -20,7 +21,7 @@
 
 body {
   margin: 0;
-  font-family: "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+  font-family: "Manrope", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
   background: var(--color-bg);
   color: var(--color-text);
   line-height: 1.5;
@@ -53,9 +54,40 @@ body {
 }
 
 .brand-mark {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 600;
   letter-spacing: 0.2px;
+  text-transform: lowercase;
+  color: #fff;
+  line-height: 1;
+}
+
+.i-dot-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.i-dot {
+  position: absolute;
+  top: 0.15em;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0.13em;
+  height: 0.13em;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.brand-endorsement {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.75);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.brand-endorsement strong {
+  color: #fff;
+  font-weight: 700;
 }
 
 .brand-tag {
@@ -101,6 +133,7 @@ body {
 
 .form-card h1 {
   font-size: 1.3rem;
+  font-weight: 800;
   margin: 0 0 4px;
 }
 
@@ -117,10 +150,10 @@ fieldset.field-group {
 }
 
 fieldset.field-group legend {
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.95rem;
   padding: 0 0 10px;
-  color: var(--color-primary-dark);
+  color: var(--color-heading-accent);
 }
 
 .hint {
@@ -159,7 +192,8 @@ fieldset.field-group legend {
   border: 1px solid var(--color-border);
   border-radius: 8px;
   font-size: 0.95rem;
-  background: #fbfcfe;
+  font-family: inherit;
+  background: #fbfafb;
   color: var(--color-text);
 }
 
@@ -188,6 +222,7 @@ fieldset.field-group legend {
 .checkbox-field input[type="checkbox"] {
   width: 16px;
   height: 16px;
+  accent-color: var(--color-primary);
 }
 
 .btn-primary {
@@ -198,7 +233,8 @@ fieldset.field-group legend {
   border: none;
   border-radius: 8px;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
+  font-family: inherit;
   cursor: pointer;
   transition: background 0.15s ease;
 }
@@ -210,15 +246,16 @@ fieldset.field-group legend {
 .results-card h2 {
   margin: 0 0 16px;
   font-size: 1.2rem;
+  font-weight: 800;
 }
 
 .recommendation {
-  background: var(--color-accent-bg);
-  border: 1px solid #a7f3d0;
-  color: #065f46;
+  background: var(--color-primary-tint);
+  border: 1px solid var(--color-primary-border);
+  color: var(--color-heading-accent);
   padding: 12px 16px;
   border-radius: 8px;
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 20px;
   font-size: 0.95rem;
 }
@@ -242,18 +279,19 @@ fieldset.field-group legend {
 }
 
 #panel-new {
-  border-color: #c7d2fe;
-  background: #f5f6ff;
+  border-color: var(--color-primary-border);
+  background: var(--color-primary-tint);
 }
 
 #panel-old {
-  border-color: #fde68a;
-  background: #fffdf5;
+  border-color: var(--color-border);
+  background: #fbfbfb;
 }
 
 .regime-panel h3 {
   margin: 0 0 12px;
   font-size: 1.05rem;
+  font-weight: 700;
 }
 
 .stat-row {
@@ -278,7 +316,7 @@ fieldset.field-group legend {
 }
 
 .stat-row.total strong {
-  color: var(--color-primary-dark);
+  color: var(--color-heading-accent);
 }
 
 .slab-breakdown {
@@ -294,7 +332,7 @@ fieldset.field-group legend {
 }
 
 .slab-breakdown .slab-heading {
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-text);
   margin-bottom: 4px;
 }
@@ -302,11 +340,13 @@ fieldset.field-group legend {
 .savings-banner {
   margin-top: 22px;
   text-align: center;
-  padding: 14px;
+  padding: 14px 16px;
   border-radius: 8px;
-  background: var(--color-warning-bg);
-  color: var(--color-warning-text);
-  font-weight: 600;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-accent);
+  color: var(--color-text);
+  font-weight: 700;
   font-size: 0.95rem;
 }
 
@@ -319,36 +359,36 @@ fieldset.field-group legend {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg: #0f1117;
-    --color-surface: #171a24;
-    --color-border: #2a2e3d;
-    --color-text: #e7e9f2;
-    --color-text-muted: #9aa1b5;
-    --color-accent-bg: #0d2b22;
-    --color-warning-bg: #2b2410;
-    --color-warning-text: #fcd34d;
+    --color-bg: #120e13;
+    --color-surface: #1d1720;
+    --color-border: #35292f;
+    --color-text: #f1ecee;
+    --color-text-muted: #a89ba3;
+    --color-primary-tint: #2c1420;
+    --color-primary-border: #5c1f3c;
+    --color-heading-accent: #f0a8c8;
   }
 
   .field input[type="number"],
   .field select {
-    background: #12141d;
+    background: #171219;
     color: var(--color-text);
     border-color: var(--color-border);
   }
 
   #panel-new {
-    background: #14162a;
-    border-color: #333a66;
+    background: var(--color-primary-tint);
+    border-color: var(--color-primary-border);
   }
 
   #panel-old {
-    background: #1e1a10;
-    border-color: #4d431d;
+    background: #211a24;
+    border-color: var(--color-border);
   }
 
-  .recommendation {
-    background: #0d2b22;
-    border-color: #14532d;
-    color: #6ee7b7;
+  .savings-banner {
+    background: var(--color-surface);
+    border-color: var(--color-border);
+    border-left-color: var(--color-accent);
   }
 }
