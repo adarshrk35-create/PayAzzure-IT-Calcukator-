@@ -1,0 +1,354 @@
+:root {
+  --color-bg: #f4f6fb;
+  --color-surface: #ffffff;
+  --color-border: #e2e6f0;
+  --color-text: #1a1f36;
+  --color-text-muted: #5b6478;
+  --color-primary: #3730a3;
+  --color-primary-dark: #262178;
+  --color-accent: #059669;
+  --color-accent-bg: #ecfdf5;
+  --color-warning-bg: #fffbeb;
+  --color-warning-text: #92400e;
+  --radius: 10px;
+  --shadow: 0 1px 3px rgba(26, 31, 54, 0.08), 0 8px 24px rgba(26, 31, 54, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.site-header {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  color: #fff;
+  padding: 20px 0;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.brand-mark {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.brand-tag {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.fy-badge {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.fy-badge span {
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  padding: 28px 20px 60px;
+}
+
+@media (min-width: 960px) {
+  .layout {
+    grid-template-columns: 420px minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+}
+
+.form-card h1 {
+  font-size: 1.3rem;
+  margin: 0 0 4px;
+}
+
+.subtitle {
+  color: var(--color-text-muted);
+  margin: 0 0 20px;
+  font-size: 0.92rem;
+}
+
+fieldset.field-group {
+  border: none;
+  padding: 0;
+  margin: 0 0 22px;
+}
+
+fieldset.field-group legend {
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0 0 10px;
+  color: var(--color-primary-dark);
+}
+
+.hint {
+  margin: -4px 0 12px;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.field {
+  margin-bottom: 14px;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+@media (min-width: 520px) {
+  .field-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.field label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.field input[type="number"],
+.field select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: #fbfcfe;
+  color: var(--color-text);
+}
+
+.field input[type="number"]:focus,
+.field select:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 1px;
+  background: #fff;
+}
+
+.field small {
+  display: block;
+  margin-top: 4px;
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+}
+
+.checkbox-field .checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.checkbox-field input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-dark);
+}
+
+.results-card h2 {
+  margin: 0 0 16px;
+  font-size: 1.2rem;
+}
+
+.recommendation {
+  background: var(--color-accent-bg);
+  border: 1px solid #a7f3d0;
+  color: #065f46;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+.regime-comparison {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 720px) {
+  .regime-comparison {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.regime-panel {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+
+#panel-new {
+  border-color: #c7d2fe;
+  background: #f5f6ff;
+}
+
+#panel-old {
+  border-color: #fde68a;
+  background: #fffdf5;
+}
+
+.regime-panel h3 {
+  margin: 0 0 12px;
+  font-size: 1.05rem;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 6px 0;
+  font-size: 0.88rem;
+  border-bottom: 1px dashed var(--color-border);
+}
+
+.stat-row span {
+  color: var(--color-text-muted);
+}
+
+.stat-row.total {
+  font-size: 1.05rem;
+  border-bottom: none;
+  border-top: 1px solid var(--color-border);
+  margin-top: 6px;
+  padding-top: 10px;
+}
+
+.stat-row.total strong {
+  color: var(--color-primary-dark);
+}
+
+.slab-breakdown {
+  margin-top: 14px;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+.slab-breakdown .slab-line {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 0;
+}
+
+.slab-breakdown .slab-heading {
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.savings-banner {
+  margin-top: 22px;
+  text-align: center;
+  padding: 14px;
+  border-radius: 8px;
+  background: var(--color-warning-bg);
+  color: var(--color-warning-text);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.site-footer {
+  padding: 24px 0 40px;
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  text-align: center;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0f1117;
+    --color-surface: #171a24;
+    --color-border: #2a2e3d;
+    --color-text: #e7e9f2;
+    --color-text-muted: #9aa1b5;
+    --color-accent-bg: #0d2b22;
+    --color-warning-bg: #2b2410;
+    --color-warning-text: #fcd34d;
+  }
+
+  .field input[type="number"],
+  .field select {
+    background: #12141d;
+    color: var(--color-text);
+    border-color: var(--color-border);
+  }
+
+  #panel-new {
+    background: #14162a;
+    border-color: #333a66;
+  }
+
+  #panel-old {
+    background: #1e1a10;
+    border-color: #4d431d;
+  }
+
+  .recommendation {
+    background: #0d2b22;
+    border-color: #14532d;
+    color: #6ee7b7;
+  }
+}

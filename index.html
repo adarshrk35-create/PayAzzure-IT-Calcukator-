@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PayAzzure | India Income Tax Calculator</title>
+<meta name="description" content="Calculate your income tax liability under India's Old and New tax regimes for FY 2025-26, compare both, and find out which saves you more." />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="brand-mark">Pay<strong>Azzure</strong></span>
+        <span class="brand-tag">India Income Tax Calculator</span>
+      </div>
+      <div class="fy-badge">FY 2025-26 <span>(AY 2026-27)</span></div>
+    </div>
+  </header>
+
+  <main class="container layout">
+    <section class="card form-card" aria-labelledby="form-heading">
+      <h1 id="form-heading">Calculate Your Income Tax</h1>
+      <p class="subtitle">Enter your income and deduction details to compare the Old and New tax regimes.</p>
+
+      <form id="tax-form" novalidate>
+        <fieldset class="field-group">
+          <legend>Income Details</legend>
+
+          <div class="field">
+            <label for="grossIncome">Annual Gross Income (₹)</label>
+            <input type="number" id="grossIncome" name="grossIncome" min="0" step="1000" inputmode="numeric" placeholder="e.g. 1200000" required />
+            <small>Total salary / business / other taxable income before any deductions.</small>
+          </div>
+
+          <div class="field">
+            <label for="ageCategory">Age Category</label>
+            <select id="ageCategory" name="ageCategory">
+              <option value="below60">Below 60 years</option>
+              <option value="senior">60 to 79 years (Senior Citizen)</option>
+              <option value="superSenior">80 years and above (Super Senior Citizen)</option>
+            </select>
+            <small>Age-based exemption limits apply only under the Old Regime.</small>
+          </div>
+
+          <div class="field checkbox-field">
+            <label class="checkbox-label">
+              <input type="checkbox" id="isSalaried" name="isSalaried" checked />
+              I am a salaried employee / pensioner
+            </label>
+            <small>Determines eligibility for the standard deduction.</small>
+          </div>
+        </fieldset>
+
+        <fieldset class="field-group">
+          <legend>Deductions &amp; Exemptions (Old Regime)</legend>
+          <p class="hint">Most of these are not available under the New Regime and will be ignored there.</p>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="sec80C">Section 80C (PF, ELSS, LIC, PPF etc.)</label>
+              <input type="number" id="sec80C" name="sec80C" min="0" step="500" value="0" />
+              <small>Max ₹1,50,000</small>
+            </div>
+            <div class="field">
+              <label for="sec80D">Section 80D (Health Insurance Premium)</label>
+              <input type="number" id="sec80D" name="sec80D" min="0" step="500" value="0" />
+              <small>Max ₹25,000 (₹50,000 if senior citizen)</small>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="sec80CCD1B">Section 80CCD(1B) (NPS Self Contribution)</label>
+              <input type="number" id="sec80CCD1B" name="sec80CCD1B" min="0" step="500" value="0" />
+              <small>Max ₹50,000</small>
+            </div>
+            <div class="field">
+              <label for="hra">HRA Exemption</label>
+              <input type="number" id="hra" name="hra" min="0" step="500" value="0" />
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="homeLoanInterest">Home Loan Interest (Section 24b)</label>
+              <input type="number" id="homeLoanInterest" name="homeLoanInterest" min="0" step="500" value="0" />
+              <small>Max ₹2,00,000 (self-occupied)</small>
+            </div>
+            <div class="field">
+              <label for="otherDeductions">Other Deductions (80G, 80TTA/TTB etc.)</label>
+              <input type="number" id="otherDeductions" name="otherDeductions" min="0" step="500" value="0" />
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="field-group">
+          <legend>Employer NPS Contribution — Section 80CCD(2)</legend>
+          <div class="field">
+            <label for="sec80CCD2">Employer NPS Contribution</label>
+            <input type="number" id="sec80CCD2" name="sec80CCD2" min="0" step="500" value="0" />
+            <small>Allowed under both Old and New Regimes.</small>
+          </div>
+        </fieldset>
+
+        <button type="submit" class="btn-primary">Calculate Tax</button>
+      </form>
+    </section>
+
+    <section class="card results-card" aria-labelledby="results-heading" id="results-section" hidden>
+      <h2 id="results-heading">Your Tax Comparison</h2>
+
+      <div class="recommendation" id="recommendation"></div>
+
+      <div class="regime-comparison">
+        <div class="regime-panel" id="panel-new">
+          <h3>New Regime</h3>
+          <div class="stat-row"><span>Taxable Income</span><strong id="new-taxable">-</strong></div>
+          <div class="stat-row"><span>Tax before Cess</span><strong id="new-tax-before-cess">-</strong></div>
+          <div class="stat-row"><span>Surcharge</span><strong id="new-surcharge">-</strong></div>
+          <div class="stat-row"><span>Health &amp; Education Cess (4%)</span><strong id="new-cess">-</strong></div>
+          <div class="stat-row total"><span>Total Tax Payable</span><strong id="new-total">-</strong></div>
+          <div class="stat-row"><span>Effective Tax Rate</span><strong id="new-rate">-</strong></div>
+          <div class="stat-row"><span>Monthly Take-Home (approx.)</span><strong id="new-takehome">-</strong></div>
+          <div class="slab-breakdown" id="new-breakdown"></div>
+        </div>
+
+        <div class="regime-panel" id="panel-old">
+          <h3>Old Regime</h3>
+          <div class="stat-row"><span>Taxable Income</span><strong id="old-taxable">-</strong></div>
+          <div class="stat-row"><span>Tax before Cess</span><strong id="old-tax-before-cess">-</strong></div>
+          <div class="stat-row"><span>Surcharge</span><strong id="old-surcharge">-</strong></div>
+          <div class="stat-row"><span>Health &amp; Education Cess (4%)</span><strong id="old-cess">-</strong></div>
+          <div class="stat-row total"><span>Total Tax Payable</span><strong id="old-total">-</strong></div>
+          <div class="stat-row"><span>Effective Tax Rate</span><strong id="old-rate">-</strong></div>
+          <div class="stat-row"><span>Monthly Take-Home (approx.)</span><strong id="old-takehome">-</strong></div>
+          <div class="slab-breakdown" id="old-breakdown"></div>
+        </div>
+      </div>
+
+      <div class="savings-banner" id="savings-banner"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>PayAzzure India Income Tax Calculator uses tax slabs notified for FY 2025-26 (AY 2026-27) under the Finance Act. Rates are subject to change by subsequent Finance Acts — please verify against the latest notification before filing. This tool is for illustrative purposes only and does not constitute tax advice.</p>
+    </div>
+  </footer>
+
+  <script src="js/calculator.js"></script>
+</body>
+</html>
