@@ -12,102 +12,113 @@
 </head>
 <body>
   <header class="site-header">
-    <div class="container">
-      <div class="header-inner">
-        <div class="brand">
-          <span class="brand-mark">wa<span class="i-dot-wrap">ı<span class="i-dot" aria-hidden="true"></span></span>ge</span>
-          <span class="brand-endorsement">a product by <strong>PayAzzure</strong></span>
-        </div>
-        <div class="fy-badge">FY 2025-26 <span>(AY 2026-27)</span></div>
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="brand-mark">wa<span class="i-dot-wrap">ı<span class="i-dot" aria-hidden="true"></span></span>ge</span>
+        <span class="brand-endorsement">a product by <strong>PayAzzure</strong></span>
       </div>
-      <span class="brand-tag">Income Tax Calculator</span>
     </div>
   </header>
 
-  <main class="container layout">
+  <section class="hero">
+    <div class="container narrow">
+      <h1>Income Tax Calculator</h1>
+      <p class="hero-subtitle">A comparative tool that helps you calculate income tax according to both the Old and New tax regime. Use this calculator to know your tax liability for FY 2025-26.</p>
+      <div class="fy-pill">FY 2025-26 <span>(AY 2026-27)</span></div>
+    </div>
+  </section>
+
+  <main class="container narrow">
     <section class="card form-card" aria-labelledby="form-heading">
-      <h1 id="form-heading">Calculate Your Income Tax</h1>
-      <p class="subtitle">Enter your income and deduction details to compare the Old and New tax regimes.</p>
+      <h2 id="form-heading" class="visually-hidden">Calculate Your Income Tax</h2>
 
       <form id="tax-form" novalidate>
-        <fieldset class="field-group">
-          <legend>Income Details</legend>
-
-          <div class="field">
-            <label for="grossIncome">Annual Gross Income (₹)</label>
-            <input type="number" id="grossIncome" name="grossIncome" min="0" step="1000" inputmode="numeric" placeholder="e.g. 1200000" required />
+        <div class="field-inline">
+          <div class="field-inline-label">
+            <label for="grossIncome" class="label-primary">Yearly income from salary (₹)</label>
             <small>Total salary / business / other taxable income before any deductions.</small>
           </div>
+          <input type="number" id="grossIncome" name="grossIncome" min="0" step="1000" inputmode="numeric" placeholder="0" required />
+        </div>
 
-          <div class="field">
-            <label for="ageCategory">Age Category</label>
-            <select id="ageCategory" name="ageCategory">
-              <option value="below60">Below 60 years</option>
-              <option value="senior">60 to 79 years (Senior Citizen)</option>
-              <option value="superSenior">80 years and above (Super Senior Citizen)</option>
-            </select>
+        <div class="field-inline">
+          <div class="field-inline-label">
+            <label for="ageCategory">Age</label>
             <small>Age-based exemption limits apply only under the Old Regime.</small>
           </div>
+          <select id="ageCategory" name="ageCategory">
+            <option value="below60">Less than 60</option>
+            <option value="senior">60 to 79 (Senior Citizen)</option>
+            <option value="superSenior">80 and above (Super Senior)</option>
+          </select>
+        </div>
 
-          <div class="field checkbox-field">
-            <label class="checkbox-label">
-              <input type="checkbox" id="isSalaried" name="isSalaried" checked />
-              I am a salaried employee / pensioner
-            </label>
-            <small>Determines eligibility for the standard deduction.</small>
+        <div class="field-inline field-inline-checkbox">
+          <label class="checkbox-label" for="isSalaried">
+            <input type="checkbox" id="isSalaried" name="isSalaried" checked />
+            I am a salaried employee / pensioner
+          </label>
+          <small>Determines eligibility for the standard deduction.</small>
+        </div>
+
+        <h3 class="section-heading">Exemption &amp; deduction details</h3>
+        <p class="hint">Most of these apply only under the Old Regime and will be ignored under the New Regime.</p>
+
+        <div class="field-inline">
+          <div class="field-inline-label">
+            <label for="hra">HRA and other exemptions</label>
           </div>
-        </fieldset>
+          <input type="number" id="hra" name="hra" min="0" step="500" value="0" placeholder="0" />
+        </div>
 
-        <fieldset class="field-group">
-          <legend>Deductions &amp; Exemptions (Old Regime)</legend>
-          <p class="hint">Most of these are not available under the New Regime and will be ignored there.</p>
-
-          <div class="field-row">
-            <div class="field">
-              <label for="sec80C">Section 80C (PF, ELSS, LIC, PPF etc.)</label>
-              <input type="number" id="sec80C" name="sec80C" min="0" step="500" value="0" />
-              <small>Max ₹1,50,000</small>
-            </div>
-            <div class="field">
-              <label for="sec80D">Section 80D (Health Insurance Premium)</label>
-              <input type="number" id="sec80D" name="sec80D" min="0" step="500" value="0" />
-              <small>Max ₹25,000 (₹50,000 if senior citizen)</small>
-            </div>
+        <div class="field-inline">
+          <div class="field-inline-label">
+            <label for="sec80C">Section 80C (PF, ELSS, LIC, PPF etc.)</label>
+            <small>Max ₹1,50,000</small>
           </div>
+          <input type="number" id="sec80C" name="sec80C" min="0" step="500" value="0" placeholder="0" />
+        </div>
 
-          <div class="field-row">
-            <div class="field">
-              <label for="sec80CCD1B">Section 80CCD(1B) (NPS Self Contribution)</label>
-              <input type="number" id="sec80CCD1B" name="sec80CCD1B" min="0" step="500" value="0" />
-              <small>Max ₹50,000</small>
-            </div>
-            <div class="field">
-              <label for="hra">HRA Exemption</label>
-              <input type="number" id="hra" name="hra" min="0" step="500" value="0" />
-            </div>
+        <div class="field-inline">
+          <div class="field-inline-label">
+            <label for="sec80D">Section 80D (Health Insurance Premium)</label>
+            <small>Max ₹25,000 (₹50,000 if senior citizen)</small>
           </div>
+          <input type="number" id="sec80D" name="sec80D" min="0" step="500" value="0" placeholder="0" />
+        </div>
 
-          <div class="field-row">
-            <div class="field">
-              <label for="homeLoanInterest">Home Loan Interest (Section 24b)</label>
-              <input type="number" id="homeLoanInterest" name="homeLoanInterest" min="0" step="500" value="0" />
-              <small>Max ₹2,00,000 (self-occupied)</small>
-            </div>
-            <div class="field">
-              <label for="otherDeductions">Other Deductions (80G, 80TTA/TTB etc.)</label>
-              <input type="number" id="otherDeductions" name="otherDeductions" min="0" step="500" value="0" />
-            </div>
+        <div class="field-inline">
+          <div class="field-inline-label">
+            <label for="sec80CCD1B">Section 80CCD(1B) (NPS Self Contribution)</label>
+            <small>Max ₹50,000</small>
           </div>
-        </fieldset>
+          <input type="number" id="sec80CCD1B" name="sec80CCD1B" min="0" step="500" value="0" placeholder="0" />
+        </div>
 
-        <fieldset class="field-group">
-          <legend>Employer NPS Contribution: Section 80CCD(2)</legend>
-          <div class="field">
+        <div class="field-inline">
+          <div class="field-inline-label">
+            <label for="homeLoanInterest">Home Loan Interest (Section 24b)</label>
+            <small>Max ₹2,00,000 (self-occupied)</small>
+          </div>
+          <input type="number" id="homeLoanInterest" name="homeLoanInterest" min="0" step="500" value="0" placeholder="0" />
+        </div>
+
+        <div class="field-inline">
+          <div class="field-inline-label">
+            <label for="otherDeductions">Other Deductions (80G, 80TTA/TTB etc.)</label>
+          </div>
+          <input type="number" id="otherDeductions" name="otherDeductions" min="0" step="500" value="0" placeholder="0" />
+        </div>
+
+        <h3 class="section-heading">Employer NPS contribution</h3>
+        <p class="hint">Section 80CCD(2), allowed under both Old and New Regimes.</p>
+
+        <div class="field-inline">
+          <div class="field-inline-label">
             <label for="sec80CCD2">Employer NPS Contribution</label>
-            <input type="number" id="sec80CCD2" name="sec80CCD2" min="0" step="500" value="0" />
-            <small>Allowed under both Old and New Regimes.</small>
           </div>
-        </fieldset>
+          <input type="number" id="sec80CCD2" name="sec80CCD2" min="0" step="500" value="0" placeholder="0" />
+        </div>
 
         <button type="submit" class="btn-primary">Calculate Tax</button>
       </form>
@@ -146,10 +157,8 @@
 
       <div class="savings-banner" id="savings-banner"></div>
     </section>
-  </main>
 
-  <section class="container faq-section" aria-labelledby="faq-heading">
-    <div class="card faq-card">
+    <section class="card faq-card" aria-labelledby="faq-heading">
       <h2 id="faq-heading">Frequently Asked Questions</h2>
       <p class="subtitle">Common questions about the Old and New income tax regimes in India.</p>
 
@@ -199,8 +208,8 @@
           <p>No. This calculator is for illustrative planning purposes only, based on tax slabs notified for FY 2025-26 (AY 2026-27). Rates can change with subsequent Finance Acts, and individual situations can involve nuances this tool doesn't cover. Please consult a qualified tax professional or the official Income Tax Department resources before filing.</p>
         </details>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <footer class="site-footer">
     <div class="container">
